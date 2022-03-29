@@ -5,12 +5,15 @@ using UnityEngine;
 public class Hero : MonoBehaviour
 {
     [SerializeField] private float speed = 3f; //скорость 
-    [SerializeField] private int lives = 9; // кол-во жизней
+    //[SerializeField] private int lives = 9; // кол-во жизней
     [SerializeField] public float jumpForce = 0.1f; //сила прыжка
     private bool isGrounded = false; //переменна€ дл€ проверки земли под ногами
 
     private Rigidbody2D rb; //ссылаемс€ на rb
     private SpriteRenderer sprite; //ссылаемс€ на sr
+
+    //реализаци€ синглтона (почитайте, мне лень тут обь€сн€ть), чтобы не создавать каждый раз экземпл€р класса, а обращатьс€ напр€мую
+    public static Hero Instance { get; set; }
 
     private void FixedUpdate()
     {
