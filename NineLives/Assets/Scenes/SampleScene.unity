@@ -1458,7 +1458,7 @@ GameObject:
   - component: {fileID: 1412829533}
   - component: {fileID: 1412829534}
   m_Layer: 0
-  m_Name: hero
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1539,6 +1539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  lives: 0
   jumpForce: 0.1
 --- !u!114 &1412829533
 MonoBehaviour:
@@ -1553,6 +1554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 9
+  scene: 
 --- !u!114 &1412829534
 MonoBehaviour:
   m_ObjectHideFlags: 0
