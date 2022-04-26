@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         pos = player.position;
-        pos.z = -10f; // т.к. камера во время слежения постоянно приблежается к игроку, то мы фиксируем ее по z
+        pos.z = -20f; // т.к. камера во время слежения постоянно приблежается к игроку, то мы фиксируем ее по z
         transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime); //lerp делает движения плавными
     }
 }
