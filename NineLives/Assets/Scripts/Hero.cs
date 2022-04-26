@@ -6,7 +6,7 @@ public class Hero : MonoBehaviour
 {
     [SerializeField] private float speed = 3f; //скорость 
     [SerializeField] private int lives = 9; // кол-во жизней
-    [SerializeField] public float jumpForce = 0.1f; //сила прыжка
+    [SerializeField] public float jumpForce = 2f; //сила прыжка
     private bool isGrounded = false; //переменная для проверки земли под ногами
 
     private Rigidbody2D rb; //ссылаемся на rb
