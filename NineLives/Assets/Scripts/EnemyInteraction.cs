@@ -9,7 +9,7 @@ public class EnemyInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "hero")
+        if (other.name == "Character")
         {
             other.GetComponent<PlayerInteraction>().TakeDamage(damage);
         }

@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Hero : MonoBehaviour
 {
     [SerializeField] private float speed = 3f; //скорость 
-    [SerializeField] private int lives = 9; // кол-во жизней
+    [SerializeField] private int lives; // кол-во жизней
     [SerializeField] public float jumpForce = 2f; //сила прыжка
     private bool isGrounded = false; //переменная для проверки земли под ногами
 
@@ -28,10 +29,12 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        lives = PlayerInteraction.Instance.health;
         if (Input.GetButton("Horizontal"))
             Move();
         if (isGrounded && Input.GetButton("Jump"))
             jump();
+
     }
 
     private void Move()

@@ -7,9 +7,11 @@ public class PlayerInteraction : MonoBehaviour
 {
     public int health = 9;
     public static PlayerInteraction Instance { get; set; }
+    public string scene;
 
     void Start()
     {
+        scene = SceneManager.GetActiveScene().name;
         Instance = this;
     }
     public void TakeDamage(int damage)
@@ -22,9 +24,10 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    //переделать потом на другое 
     private void Die()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(scene);
     }
 
 
