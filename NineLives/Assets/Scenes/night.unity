@@ -918,12 +918,11 @@ GameObject:
   m_Component:
   - component: {fileID: 665059116}
   - component: {fileID: 665059114}
-  - component: {fileID: 665059117}
-  - component: {fileID: 665059118}
   - component: {fileID: 665059115}
+  - component: {fileID: 665059117}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -962,7 +961,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.722363, y: 0.41482705}
+  m_Offset: {x: 4.722363, y: 0.44595206}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -973,7 +972,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3471441, y: 1.7265114}
+  m_Size: {x: 1.505599, y: 1.8340342}
   m_EdgeRadius: 0
 --- !u!4 &665059116
 Transform:
@@ -999,35 +998,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 665059113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ed7cf9b9ea16704c8994bbac338fbaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 203c1a59f439b5f4b88ef55e7d1ce720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &665059118
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 665059113}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 4.6981306, y: 0.4302178}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5939293, y: 1.8604356}
-  m_EdgeRadius: 0
 --- !u!1 &709679645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,7 +2282,7 @@ GameObject:
   - component: {fileID: 1775962433}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2404,7 +2377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 9
-  scene: 
+  damage: 1
+  invincibleTime: 5
 --- !u!114 &1775962433
 MonoBehaviour:
   m_ObjectHideFlags: 0

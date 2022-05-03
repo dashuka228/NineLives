@@ -13,6 +13,8 @@ public class Hero : MonoBehaviour
     private Rigidbody2D rb; //ссылаемся на rb
     private SpriteRenderer sprite; //ссылаемся на sr
 
+    public static Hero Instance { get; set; }
+
     private void FixedUpdate()
     {
         CheckGround();
@@ -24,6 +26,7 @@ public class Hero : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>(); //getcomponent берет rigidbody с gameobject, всё норм
         sprite = GetComponentInChildren<SpriteRenderer>(); //т.к. spriterender находится не на gameobject, а находится в его иерархии мы юзаем getcomponentinchildren
+        Instance = this;
     }
 
     // Update is called once per frame

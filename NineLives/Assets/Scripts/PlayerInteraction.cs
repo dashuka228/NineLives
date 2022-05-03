@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class PlayerInteraction : MonoBehaviour
 {
     public int health = 9;
+    public int damage = 1;
     public static PlayerInteraction Instance { get; set; }
-    public string scene;
-    
+    private string scene;
+    [SerializeField] int invincibleTime = 5;
 
     void Start()
     {
@@ -51,7 +52,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             health -= damage;
             invincible = true;
-            Invoke("resetInvulnerability", 5);
+            Invoke("resetInvulnerability", invincibleTime);
         }
 
         if (health <= 0)
