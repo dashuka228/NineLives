@@ -9,7 +9,9 @@ public class Hero : MonoBehaviour
     [SerializeField] private int lives; // кол-во жизней
     [SerializeField] public float jumpForce = 2f; //сила прыжка
     private bool isGrounded = false; //переменная для проверки земли под ногами
-
+    private float groundRadius = 0.3f;
+    public Transform groundCheck;
+    public LayerMask groundMask;
     private Rigidbody2D rb; //ссылаемся на rb
     private SpriteRenderer sprite; //ссылаемся на sr
 
@@ -17,7 +19,7 @@ public class Hero : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckGround();
+        //CheckGround();
     }
 
 
@@ -32,11 +34,13 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundMask);
         lives = PlayerInteraction.Instance.health;
+
         if (Input.GetButton("Horizontal"))
             Move();
         if (isGrounded && Input.GetButton("Jump"))
-            jump();
+            Jump();
 
     }
 
@@ -49,13 +53,15 @@ public class Hero : MonoBehaviour
         sprite.flipX = dir.x < 0.0f; //обращаемся к замечательному свойству спрайта flipX, которое отзеркаливает персонажа, если он идёт в другую сторону
     }
 
-    private void jump()
+    private void Jump()
     {
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
 
     //метод для проверки земли под ногами (чтоб перс от воздуха не прыгал)
     //создание массива коллайдеров, который собирает в себя количество объектов под ногами
+
+    /*
     private void CheckGround()
     {
         //Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.3f); //смещение координат у персонажа, чтобы находить землю прям снизу
@@ -65,4 +71,5 @@ public class Hero : MonoBehaviour
 
         isGrounded = colliders.Length > 1;
     }
+    */
 }

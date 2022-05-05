@@ -10,6 +10,7 @@ public class PlayerInteraction : MonoBehaviour
     public static PlayerInteraction Instance { get; set; }
     private string scene;
     [SerializeField] int invincibleTime = 5;
+    private int items = 0;
 
     void Start()
     {
@@ -71,5 +72,9 @@ public class PlayerInteraction : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-
+    public void AddItem (int itemCount)
+    {
+        items += itemCount;
+        Debug.Log("”–¿ " + items + " —¿ÀŒ!!!!!");
+    }
 }
