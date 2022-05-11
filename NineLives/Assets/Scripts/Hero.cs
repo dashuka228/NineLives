@@ -7,23 +7,20 @@ public class Hero : MonoBehaviour
 {
     [SerializeField] private float speed = 3f; //скорость 
     [SerializeField] private int lives; // кол-во жизней
-    [SerializeField] public float jumpForce = 0.15f; //сила прыжка
+
+    private Rigidbody2D rb; //ссылаемс€ на rb
+    private SpriteRenderer sprite; //ссылаемс€ на sr
+
+    [SerializeField] private float jumpForce = 0.15f; //сила прыжка
     private bool isGrounded = false; //переменна€ дл€ проверки земли под ногами
     private float groundRadius = 0.3f;
     public Transform groundCheck;
     public LayerMask groundMask;
-    private Rigidbody2D rb; //ссылаемс€ на rb
-    private SpriteRenderer sprite; //ссылаемс€ на sr
-
+    [SerializeField] private float timeToDown = 0.5f;
+   
     public static Hero Instance { get; set; }
 
-    private void FixedUpdate()
-    {
-        //CheckGround();
-    }
 
-
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); //getcomponent берет rigidbody с gameobject, всЄ норм
@@ -31,45 +28,54 @@ public class Hero : MonoBehaviour
         Instance = this;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundMask);
         lives = PlayerInteraction.Instance.health;
 
-        if (Input.GetButton("Horizontal"))
-            Move();
-        if (isGrounded && Input.GetButton("Jump"))
-            Jump();
+        CheckGround();
 
+        Move();
+
+        Jump();
+        
     }
 
     private void Move()
     {
-        Vector3 dir = transform.right * Input.GetAxis("Horizontal");
+        if (Input.GetButton("Horizontal"))
+        {
+            Vector3 dir = transform.right * Input.GetAxis("Horizontal");
 
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime); //задание движени€
+            transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime); //задание движени€
 
-        sprite.flipX = dir.x < 0.0f; //обращаемс€ к замечательному свойству спрайта flipX, которое отзеркаливает персонажа, если он идЄт в другую сторону
+            sprite.flipX = dir.x < 0.0f; //обращаемс€ к замечательному свойству спрайта flipX, которое отзеркаливает персонажа, если он идЄт в другую сторону
+        }
     }
 
     private void Jump()
     {
-        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Physics2D.IgnoreLayerCollision(7, 8, true);
+            Invoke("IgnoreLayerOff", timeToDown);
+        }
+
+        if (isGrounded && Input.GetButton("Jump"))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
     }
+
 
     //метод дл€ проверки земли под ногами (чтоб перс от воздуха не прыгал)
-    //создание массива коллайдеров, который собирает в себ€ количество объектов под ногами
-
-    /*
     private void CheckGround()
     {
-        //Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.3f); //смещение координат у персонажа, чтобы находить землю пр€м снизу
-        //isGrounded = collider.Length > 1; //если объектов больше одного под персом, то он на земле (первичное значение пока)
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3f);
-
-        isGrounded = colliders.Length > 1;
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundMask);
     }
-    */
+
+    private void IgnoreLayerOff()
+    {
+        Physics2D.IgnoreLayerCollision(7, 8, false);
+    }
 }
