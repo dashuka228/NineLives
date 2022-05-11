@@ -58,14 +58,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\CyberPunk\Scripts\Perspective2DSortMode.cs" />
+    <Compile Include="Assets\Scripts\Items.cs" />
+    <Compile Include="Assets\Scripts\StaticEnemyWithHealth.cs" />
     <Compile Include="Assets\Scripts\Hero.cs" />
     <Compile Include="Assets\Scripts\HeartSystem.cs" />
     <Compile Include="Assets\Scripts\PlayerInteraction.cs" />
-    <Compile Include="Assets\CyberPunk\Scripts\Done_BGScroller.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\StaticEnemy.cs" />
-    <Compile Include="Assets\Scripts\StaticEnemyWithHealth.cs" />
     <Compile Include="Assets\Scripts\WalkingEnemy.cs" />
+    <Compile Include="Assets\CyberPunk\Scripts\Done_BGScroller.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Pixel Font - Tripfive\_README.txt" />
