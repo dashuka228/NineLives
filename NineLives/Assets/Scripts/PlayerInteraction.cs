@@ -22,26 +22,26 @@ public class PlayerInteraction : MonoBehaviour
         
     }
 
-    /**private bool invincible = false;
-    public float invincibilityTime = 3f;
+    //private bool invincible = false;
+    //public float invincibilityTime = 3f;
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!invincible)
-        {
-            if (collision.gameObject.tag == "enemy")
-            {
-                StartCoroutine(Invulnerability());
-            }
-        }
-    }
+    //void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (!invincible)
+    //    {
+    //        if (collision.gameObject.tag == "enemy")
+    //        {
+    //            StartCoroutine(Invulnerability());
+    //        }
+    //    }
+    //}
 
-    IEnumerator Invulnerability()
-    {
-        invincible = true;
-        yield return new WaitForSeconds(invincibilityTime);
-        invincible = false;
-    }**/
+    //IEnumerator Invulnerability()
+    //{
+    //    invincible = true;
+    //    yield return new WaitForSeconds(invincibilityTime);
+    //    invincible = false;
+    //}
 
 
     private bool invincible = false;
