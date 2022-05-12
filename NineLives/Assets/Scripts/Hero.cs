@@ -12,7 +12,7 @@ public class Hero : MonoBehaviour
     [SerializeField] private float speed = 3f; //скорость 
     [SerializeField] private int lives; // кол-во жизней
 
-    private Rigidbody2D rb; //ссылаемся на rb
+    public Rigidbody2D rb; //ссылаемся на rb
     private SpriteRenderer sprite; //ссылаемся на sr
 
     [SerializeField] private float jumpForce = 0.15f; //сила прыжка
@@ -43,7 +43,7 @@ public class Hero : MonoBehaviour
 
         Move();
 
-        Jump();
+        Jump(jumpForce);
         
     }
 
@@ -59,7 +59,7 @@ public class Hero : MonoBehaviour
         }
     }
 
-    private void Jump()
+    private void Jump(float jumpForce)
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
