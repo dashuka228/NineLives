@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Hero : MonoBehaviour
 {
+    //[SerializeField] private CharacterController controller;
+    //[SerializeField] public Animator animator;
+    //2D Animation in Unity (Tutorial)
+
     [SerializeField] private float speed = 3f; //скорость 
     [SerializeField] private int lives; // кол-во жизней
 
