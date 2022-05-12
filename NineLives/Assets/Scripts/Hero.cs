@@ -32,11 +32,14 @@ public class Hero : MonoBehaviour
         Instance = this;
     }
 
+    private void FixedUpdate()
+    {
+        CheckGround();
+    }
+
     void Update()
     {
         lives = PlayerInteraction.Instance.health;
-
-        CheckGround();
 
         Move();
 
@@ -64,7 +67,7 @@ public class Hero : MonoBehaviour
             Invoke("IgnoreLayerOff", timeToDown);
         }
 
-        if (isGrounded && Input.GetButton("Jump"))
+        if (isGrounded && Input.GetButton("Jump") && (rb.velocity.y <= 0)) //ÏÈÇÄÅÖ ÏÎÑÒÀÂÜÒÅ ÝÒÓ ÑÒÐÎ×ÊÓ Â ÐÀÌÊÓ ÍÀÕÓÉ. ÅÁÀÍÛÉ ÏÐÛÆÎÊ...
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
