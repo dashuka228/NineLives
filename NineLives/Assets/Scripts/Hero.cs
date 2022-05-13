@@ -9,32 +9,38 @@ public class Hero : MonoBehaviour
     //[SerializeField] public Animator animator;
     //2D Animation in Unity (Tutorial)
 
+    //КОМПОНЕНТЫ
+    public Rigidbody2D rb; 
+    private SpriteRenderer sprite; 
+
+    //ГЕЙМПЛЕЙ
     [SerializeField] private float speed = 3f; //скорость 
-    [SerializeField] private int lives; // кол-во жизней
-
-    public Rigidbody2D rb; //ссылаемся на rb
-    private SpriteRenderer sprite; //ссылаемся на sr
-
+    [SerializeField] private int lives; // количество жизней 
     [SerializeField] private float jumpForce = 0.15f; //сила прыжка
-    private bool isGrounded = false; //переменная для проверки земли под ногами
+
+    //GROUND CHECK
+    private bool isGrounded = false; 
     private float groundRadius = 0.3f;
     public Transform groundCheck;
     public LayerMask groundMask;
-    [SerializeField] private float timeToDown = 0.5f;
+
+    //ПЛАТФОРМЫ
+    [SerializeField] private float timeToDown = 0.5f; //скорость спуска с платформы
    
+    //СОЗДАНИЕ ССЫЛКИ К СКРИПТУ
     public static Hero Instance { get; set; }
 
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>(); //getcomponent берет rigidbody с gameobject, всё норм
-        sprite = GetComponentInChildren<SpriteRenderer>(); //т.к. spriterender находится не на gameobject, а находится в его иерархии мы юзаем getcomponentinchildren
-        Instance = this;
-    }
 
     private void FixedUpdate()
     {
         CheckGround();
+    }
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>(); 
+        sprite = GetComponent<SpriteRenderer>(); 
+        Instance = this;
     }
 
     void Update()
@@ -44,9 +50,12 @@ public class Hero : MonoBehaviour
         Move();
 
         Jump(jumpForce);
-        
+
+        DownFromThePlatform();
     }
 
+
+    //ДВИЖЕНИЕ
     private void Move()
     {
         if (Input.GetButton("Horizontal"))
@@ -59,26 +68,30 @@ public class Hero : MonoBehaviour
         }
     }
 
+    //ПРЫЖОК
     private void Jump(float jumpForce)
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Physics2D.IgnoreLayerCollision(7, 8, true);
-            Invoke("IgnoreLayerOff", timeToDown);
-        }
-
-        if (isGrounded && Input.GetButton("Jump") && (rb.velocity.y <= 0)) //ПИЗДЕЦ ПОСТАВЬТЕ ЭТУ СТРОЧКУ В РАМКУ НАХУЙ. ЕБАНЫЙ ПРЫЖОК...
+        if (isGrounded && Input.GetButton("Jump") && (rb.velocity.y == 0)) //ПИЗДЕЦ ПОСТАВЬТЕ ЭТО ВТОРОЕ УСЛОВИЕ В РАМКУ НАХУЙ. ЕБАНЫЙ ПРЫЖОК...
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
 
-
-    //метод для проверки земли под ногами (чтоб перс от воздуха не прыгал)
+    //ПРОВЕРКА ЗЕМЛИ
     private void CheckGround()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundMask);
+    }
+    
+    //СПУСК С ПЛАТФОРМЫ
+    private void DownFromThePlatform()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Physics2D.IgnoreLayerCollision(7, 8, true);
+            Invoke("IgnoreLayerOff", timeToDown);
+        }
     }
 
     private void IgnoreLayerOff()

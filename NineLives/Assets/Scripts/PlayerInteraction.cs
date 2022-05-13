@@ -5,12 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public int health = 9;
-    public int damage = 1;
+    //ГЕЙМПЛЕЙ
+    [SerializeField] public int health = 9; //здоровье
+    [SerializeField] public int damage = 1; //урон
+    [SerializeField] private int invincibleTime = 5; //время неуязвимости после принятия урона
+
+    private bool invincible = false;
+
+    //СЦЕНА
+    private string scene; 
+
+    //ITEMS
+    private int itemsInInventory = 0; //количество предметов в инвентаре
+
+    //СОЗДАНИЕ ССЫЛКИ К СКРИПТУ
     public static PlayerInteraction Instance { get; set; }
-    private string scene;
-    [SerializeField] int invincibleTime = 5;
-    private int items = 0;
+
 
     void Start()
     {
@@ -18,35 +28,7 @@ public class PlayerInteraction : MonoBehaviour
         Instance = this;
     }
 
-    private void Update()
-    {
-        
-    }
-
-    //private bool invincible = false;
-    //public float invincibilityTime = 3f;
-
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (!invincible)
-    //    {
-    //        if (collision.gameObject.tag == "enemy")
-    //        {
-    //            StartCoroutine(Invulnerability());
-    //        }
-    //    }
-    //}
-
-    //IEnumerator Invulnerability()
-    //{
-    //    invincible = true;
-    //    yield return new WaitForSeconds(invincibilityTime);
-    //    invincible = false;
-    //}
-
-
-    private bool invincible = false;
-
+    //ПРИНЯТИЕ УРОНА
     public void TakeDamage(int damage)
     {
         if (!invincible)
@@ -66,15 +48,18 @@ public class PlayerInteraction : MonoBehaviour
         invincible = false;
     }
 
-    //переделать потом на другое 
+    //ДОБАВЛЕНИЕ ITEMS
+    public void AddItem(int itemCount)
+    {
+        itemsInInventory += itemCount;
+        Debug.Log("УРА, в инвентаре:" + itemsInInventory);
+    }
+
+    //СМЕРТЬ(((
     private void Die()
     {
         SceneManager.LoadScene(scene);
     }
 
-    public void AddItem (int itemCount)
-    {
-        items += itemCount;
-        Debug.Log("УРА " + items + " САЛО!!!!!");
-    }
+
 }

@@ -5,11 +5,11 @@ using UnityEngine;
 public class StaticEnemyWithHealth : MonoBehaviour
 {
 
-    [SerializeField] int health = 3;
-    [SerializeField] int damageE = 1;
+    [SerializeField] private int health = 3; //здоровье 
+    [SerializeField] private int damageE = 1; //урон
 
 
-    //тут враг бьЄт
+    //¬раг наносит урон
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "hero")
@@ -18,7 +18,7 @@ public class StaticEnemyWithHealth : MonoBehaviour
         }
     }
 
-    //тут враг принимает урон
+    //¬раг принимает урон
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -29,6 +29,7 @@ public class StaticEnemyWithHealth : MonoBehaviour
         }
     }
 
+    //ѕ–»Ќя“»≈ ”–ќЌј
     private void TakeDamageE(int damage)
     {
         health -= damage;
@@ -39,6 +40,7 @@ public class StaticEnemyWithHealth : MonoBehaviour
         }
     }
 
+    //—ћ≈–“№
     private void Die()
     {
         Destroy(this.gameObject);

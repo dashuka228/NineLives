@@ -4,28 +4,21 @@ using UnityEngine;
 
 public class WalkingEnemy : MonoBehaviour
 {
-    private int damageE = 1;
-    public float speed;
-    public Vector3[] positions;
-    public Vector3 dir;
-    private int currentTarget;
+    [SerializeField] private int damageE; //урон
+    [SerializeField] private float speed; //скорость
+
+    [SerializeField] private Vector3[] positions; //массив позиций 
+    [SerializeField] private Vector3 dir; //количество позиций
+    private int currentTarget; //текущая цель для передвижения
 
 
 
     public void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, positions[currentTarget], speed);
-        if (transform.position == positions[currentTarget])
-        {
-            if (currentTarget < positions.Length - 1)
-                currentTarget++;
-                
-            else
-                currentTarget = 0;
-            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
-        }
+        Moving();
     }
-
+    
+    //Проверка на столкновение с персонажем
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "hero")
@@ -34,6 +27,19 @@ public class WalkingEnemy : MonoBehaviour
         }
     }
 
-    
+    //ПЕРЕДВИЖЕНИЕ 
+    private void Moving()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, positions[currentTarget], speed);
+        if (transform.position == positions[currentTarget])
+        {
+            if (currentTarget < positions.Length - 1)
+                currentTarget++;
+
+            else
+                currentTarget = 0;
+            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+        }
+    }
 
 }

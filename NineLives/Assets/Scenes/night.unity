@@ -886,10 +886,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5ce306bacfb3d4e89666a1d4619836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   speed: 6
   lives: 0
-  rb: {fileID: 0}
-  jumpForce: 25
+  jumpForce: 35
   groundCheck: {fileID: 760613950}
   groundMask:
     serializedVersion: 2

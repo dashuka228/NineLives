@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    [SerializeField] private float moveUp;
-    private Vector3 pos;
+    [SerializeField] private Transform player; //местоположение персонажа
+    [SerializeField] private float moveUp; //поднятие камеры
 
-    // Start is called before the first frame update
+    private Vector3 pos; //положение камеры
+
+
     void Start()
     {
         if (!player)
             player = FindObjectOfType<Hero>().transform; 
     }
 
-    // Update is called once per frame
+
     void Update()
+    {
+        Tracking();
+    }
+
+    private void Tracking()
     {
         pos = player.position;
         pos.y += moveUp;
-        pos.z = -20f; // т.к. камера во время слежения постоянно приблежается к игроку, то мы фиксируем ее по z
-        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime); //lerp делает движения плавными
+        pos.z = -20f; //фиксация камеры
+        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime); 
     }
 }

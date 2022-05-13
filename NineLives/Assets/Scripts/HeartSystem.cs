@@ -5,26 +5,33 @@ using UnityEngine.UI;
 
 public class HeartSystem : MonoBehaviour
 {
-    [SerializeField] private Image[] hearts;
 
-    [SerializeField] private Sprite aliveHeart;
-    [SerializeField] private Sprite deadHeart;
-    [SerializeField] private int lives, health;
+    [SerializeField] private Image[] hearts; //массив сердец
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        health = PlayerInteraction.Instance.health;
-        lives = health;
-    }
+    [SerializeField] private Sprite aliveHeart; //спрайт живого сердца
+    [SerializeField] private Sprite deadHeart; //спрайт мертвого сердца
+
+    [SerializeField] private int lives; //количество сердец
+    [SerializeField] private int health; //количество жизней
 
 
-    // Update is called once per frame
+    //void Start()
+    //{
+    //    health = PlayerInteraction.Instance.health;
+    //    lives = health;
+    //}
+
     void Update()
     {
         health = PlayerInteraction.Instance.health;
         lives = health;
 
+        HeartsSystem();
+    }
+
+    //СИСТЕМА СЕРДЕЦ
+    private void HeartsSystem()
+    {
         if (health > lives)
             health = lives;
 
