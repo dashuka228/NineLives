@@ -28,6 +28,7 @@ public class PlayerInteraction : MonoBehaviour
         Instance = this;
     }
 
+
     //œ–»Õﬂ“»≈ ”–ŒÕ¿
     public void TakeDamage(int damage)
     {

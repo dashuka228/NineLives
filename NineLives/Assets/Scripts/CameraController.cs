@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform player; //местоположение персонажа
     [SerializeField] private float moveUp; //поднятие камеры
+    [SerializeField] private float speed; //скорость слежения
 
     private Vector3 pos; //положение камеры
 
@@ -27,6 +28,6 @@ public class CameraController : MonoBehaviour
         pos = player.position;
         pos.y += moveUp;
         pos.z = -20f; //фиксация камеры
-        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime); 
+        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * speed); 
     }
 }

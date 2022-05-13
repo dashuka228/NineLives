@@ -11,15 +11,9 @@ public class HeartSystem : MonoBehaviour
     [SerializeField] private Sprite aliveHeart; //спрайт живого сердца
     [SerializeField] private Sprite deadHeart; //спрайт мертвого сердца
 
-    [SerializeField] private int lives; //количество сердец
-    [SerializeField] private int health; //количество жизней
+    private int lives; //количество сердец
+    private int health; //количество жизней
 
-
-    //void Start()
-    //{
-    //    health = PlayerInteraction.Instance.health;
-    //    lives = health;
-    //}
 
     void Update()
     {
