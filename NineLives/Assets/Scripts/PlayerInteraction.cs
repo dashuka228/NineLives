@@ -16,7 +16,7 @@ public class PlayerInteraction : MonoBehaviour
     private string scene; 
 
     //ITEMS
-    private int itemsInInventory = 0; //количество предметов в инвентаре
+    public int itemsInInventory = 0; //количество предметов в инвентаре
 
     //СОЗДАНИЕ ССЫЛКИ К СКРИПТУ
     public static PlayerInteraction Instance { get; set; }

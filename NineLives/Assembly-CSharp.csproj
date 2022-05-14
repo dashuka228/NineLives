@@ -68,9 +68,9 @@
     <Compile Include="Assets\Scripts\WalkingEnemy.cs" />
     <Compile Include="Assets\Scripts\Parallax.cs" />
     <Compile Include="Assets\CyberPunk\Scripts\Done_BGScroller.cs" />
+    <Compile Include="Assets\Scripts\ItemsCounter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Pixel Font - Tripfive\_README.txt" />
     <None Include="Assets\Nature_pixel_art_assets\pixel_snapping_README.txt" />
   </ItemGroup>
   <ItemGroup>
