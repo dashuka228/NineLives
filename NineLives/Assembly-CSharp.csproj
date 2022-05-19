@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\FallingPlatform.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\CyberPunk\Scripts\Perspective2DSortMode.cs" />
     <Compile Include="Assets\Scripts\Items.cs" />
@@ -69,8 +70,22 @@
     <Compile Include="Assets\Scripts\Parallax.cs" />
     <Compile Include="Assets\CyberPunk\Scripts\Done_BGScroller.cs" />
     <Compile Include="Assets\Scripts\ItemsCounter.cs" />
+    <Compile Include="Assets\Pixel Dogs\Scripts\Personality.cs" />
+    <Compile Include="Assets\Pixel Dogs\Scripts\DogDatabase.cs" />
+    <Compile Include="Assets\Pixel Dogs\Scripts\PixelPerfectCameraScript.cs" />
+    <Compile Include="Assets\Pixel Dogs\Scripts\ObsticleDetection.cs" />
+    <Compile Include="Assets\Pixel Dogs\Scripts\DogBehaviour.cs" />
+    <Compile Include="Assets\Pixel Dogs\Scripts\DogSpawner.cs" />
+    <Compile Include="Assets\Pixel Dogs\Scripts\Ball.cs" />
+    <Compile Include="Assets\Pixel Dogs\Scripts\UICommands.cs" />
+    <Compile Include="Assets\Pixel Dogs\Scripts\Dog.cs" />
+    <Compile Include="Assets\Pixel Dogs\Scripts\ItemCannon.cs" />
+    <Compile Include="Assets\Scripts\FlyingEnemy.cs" />
+    <Compile Include="Assets\Enemy Galore 1 - Pixel Art\Script\EnemyTest.cs" />
+    <Compile Include="Assets\Scripts\FallingObject.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Enemy Galore 1 - Pixel Art\Read Me.txt" />
     <None Include="Assets\Nature_pixel_art_assets\pixel_snapping_README.txt" />
   </ItemGroup>
   <ItemGroup>
