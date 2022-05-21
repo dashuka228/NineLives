@@ -7,6 +7,9 @@ TagManager:
   - enemy
   - hero
   - NewBall
+  - item
+  - jump pad
+  - platform
   layers:
   - Default
   - TransparentFX
@@ -19,7 +22,7 @@ TagManager:
   - Platform
   - Item
   - Enemy
-  - 
+  - Interaction
   - 
   - 
   - 
