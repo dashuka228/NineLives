@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Hero : MonoBehaviour
 {
-    //[SerializeField] private CharacterController controller;
-    //[SerializeField] public Animator animator;
+    [SerializeField] private CharacterController controller;
+    [SerializeField] public Animator animator;
     //2D Animation in Unity (Tutorial)
 
     //йнлонмемрш
@@ -52,6 +53,11 @@ public class Hero : MonoBehaviour
         Jump(jumpForce);
 
         DownFromThePlatform();
+
+        float horizontalMove = Math.Abs(Input.GetAxisRaw("Horizontal") * speed);
+        animator.SetFloat("Speed", horizontalMove);
+
+
     }
 
 
@@ -75,6 +81,7 @@ public class Hero : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            animator.SetBool("IsJumping", true);
         }
     }
 
