@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemy
   - hero
+  - NewBall
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - Ground
   - Character
   - Platform
-  - 
-  - 
+  - Item
+  - Enemy
   - 
   - 
   - 

@@ -117,13 +117,13 @@ CircleCollider2D:
   m_GameObject: {fileID: 1000013221928856}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: f438ad15c6ad9b34b8a7d53bc5cdac38, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.00028436186}
   serializedVersion: 2
-  m_Radius: 0.0546875
+  m_Radius: 0.054403137
 --- !u!114 &114646875124219402
 MonoBehaviour:
   m_ObjectHideFlags: 0

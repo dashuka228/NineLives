@@ -1,30 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FallingPlatform : MonoBehaviour
 {
-    private Rigidbody2D rb; 
-    private GameObject platform;
+    private Rigidbody2D rb;
+    private SpriteRenderer spriteR;
+
     [SerializeField] private float timeToFall; //через сколько платформа начнет падать
-    //[SerializeField] private float timeToDestroy; //через сколько платформа уничтожится
+    [SerializeField] private Sprite[] sprites;
+
+    private int[] layers; //слои, об которые платформа разрушается
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteR = GetComponent<SpriteRenderer>();
+        spriteR.sprite = sprites[0]; 
+        layers = new int[] { 6, 8, 9 };
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Проверка на столкновение с персонажем
-        if (collision.gameObject.tag == "hero")
+        if (collision.gameObject.tag == "hero" && Hero.Instance.rb.velocity.y == 0)
         {
             Invoke("FallPlatform", timeToFall);
         }
-        
-        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 8)
+
+        //проверка на столкновение с определенными объектами для разрушения платформы
+        else
         {
-            Destroy(gameObject);
+            if (layers.Contains(collision.gameObject.layer))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -32,6 +45,13 @@ public class FallingPlatform : MonoBehaviour
     private void FallPlatform ()
     {
         rb.isKinematic = false;
+        spriteR.sprite = sprites[1]; 
+        Invoke("ChangeSprite", 0.5f);
     }
 
+    //МЕТОД ЗАМЕНЫ СПРАЙТА ВО ВРЕМЯ ПОЛЕТА
+    private void ChangeSprite ()
+    {
+        spriteR.sprite = sprites[2];
+    }
 }

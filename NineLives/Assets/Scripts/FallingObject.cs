@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class FallingObject : MonoBehaviour
 {
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject, 2f);
+        Invoke("DestroyObj", 1f);
+    }
+
+    private void DestroyObj()
+    {
+        Destroy(gameObject);
     }
 }
