@@ -80,7 +80,11 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\player\Hero.cs" />
+<<<<<<< Updated upstream
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+=======
+    <Compile Include="Assets\Scripts\Menu\PauseMenu.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Assets\Scripts\enemies\flying enemy\FlyingEnemy.cs" />
     <Compile Include="Assets\Scripts\player\HeartSystem.cs" />
     <Compile Include="Assets\Scripts\player\PlayerInteraction.cs" />
